@@ -18,19 +18,34 @@ La base de datos `paquetes_cran` contiene información sobre los paquetes public
 **Pregunta:** ¿Cómo se comporta la cantidad de paquetes publicados en CRAN a través de los años?, ¿existe alguna tendencia con respecto del idioma de los paquetes? 
 
 
-**Introducción:** *Tu introducción va aqui*
+**Introducción:** *Este es un informe sobre los pauetes publicados en *
 
-**Enfoque:** *Tu forma de resolución va aquí*
+**Enfoque:** *vamos a utilizar graficos de puntos para ver la relacion entre las publicaciones y las versiones, tambien vamos a utilizar graficos de histograma para ver las publicaciones en comparacion con los años*
 
 **Analisis:**
 
 
 ```{r}
-# Tu código de R va aquí
+library(tidyverse)
+view(paquetes_cran)
+
+a <- table(paquetes_cran$fecha_publicacion)
+#view(a)
 ```
 
 ```{r}
-# Tu código de R va aquí
+ ggplot(data=paquetes_cran, mapping = aes(fecha_publicacion)) +
+geom_histogram(bins=27)
+ ggplot(data=paquetes_cran, mapping = aes(version>1)) +
+geom_histogram(bins=27, stat="count")
+  ggplot(data=paquetes_cran, mapping = aes(fecha_publicacion)) +
+geom_bar()
+  ggplot(data=paquetes_cran, mapping = aes(fecha_publicacion)) +
+geom_boxplot()
+
+ 
+#ggplot(data=paquetes_cran, mapping = aes(version)) +
+#geom_histogram(bins=27, stat = 'count')
 ```
 
 
