@@ -34,22 +34,21 @@ a <- table(paquetes_cran$fecha_publicacion)
 ```
 
 ```{r}
- ggplot(data=paquetes_cran, mapping = aes(fecha_publicacion)) +
-geom_histogram(bins=27)
- ggplot(data=paquetes_cran, mapping = aes(version>1)) +
-geom_histogram(bins=27, stat="count")
-  ggplot(data=paquetes_cran, mapping = aes(fecha_publicacion)) +
-geom_bar()
-  ggplot(data=paquetes_cran, mapping = aes(fecha_publicacion)) +
-geom_boxplot()
+ggplot(paquetes_cran, aes(x=fecha_publicacion)) +
+  
+  geom_histogram(aes(),color="black", fill="white", binwidth = 100) + #histograma
+  geom_density(alpha=.2, fill="#ff6666") + # linea de densidad con relleno transparente
+  geom_vline(aes(xintercept=max(fecha_publicacion)), color="blue", linetype="dashed", size=2) 
+  
+ # geom_vline(aes(yintercept=mean(fecha_publicacion)), color="green", linetype="dashed", size=2)
 
- 
-#ggplot(data=paquetes_cran, mapping = aes(version)) +
-#geom_histogram(bins=27, stat = 'count')
+ggplot(paquetes_cran, aes(y=idioma))+
+  geom_bar()
 ```
 
 
-**Discusión:** *Tu discusión de los resultados va aquí.*
+
+**Discusión:** *se puede ver que en el histograma, que la publicacion de paquetes en rstudio tuvo una tendencia creciente casi exponencial, alcanzando su maximo en 2018, en el grafico 2 se puede ver que la practica predominante es la de no idicar el tipo de idioma en los paquetes  *
 
 ### **Parte 2**
 
